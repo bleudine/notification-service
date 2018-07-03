@@ -10,6 +10,6 @@ app.use(bodyParser.json());
 
 app.use('/notify', notify);
 
-http.listen(3030, function(){
-    console.log('listening on *:3030');
+http.listen(8080, function(){
+    console.log('listening on *:8080');
 });
