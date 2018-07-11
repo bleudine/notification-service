@@ -1,12 +1,16 @@
 const nodemailer = require('nodemailer');
+const authentication = require('../security/authentication');
 
-const {MAIL, PASS, SERVICE, MAIL_PLACEHOLDER} = process.env;
+const {MAIL, SERVICE_HOST, MAIL_PLACEHOLDER} = process.env;
 
 const transporter = nodemailer.createTransport({
-    service: SERVICE,
+    host: SERVICE_HOST,
+    port: 465,
+    secure: true,
     auth: {
-        user: MAIL,
-        pass: PASS,
+        ...authentication.authenticate.credentials,
+        type: 'OAuth2',
+        accessToken: authentication.authenticate.accessToken
     }
 });
 
@@ -22,7 +26,7 @@ module.exports.sendMail = function(req, res) {
         to: req.body.mail || MAIL_PLACEHOLDER,
     }, (error, info) => {
         if (error) {
-            console.error(error);
+            console.log(error);
             res.send('the mail couldn\'t be delivered');
         } else {
             res.send('the mail was successfully sent');
