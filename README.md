@@ -9,3 +9,7 @@ To test SMS notifications you first need to setup a NEXMO test account and add a
 To interact with the API :
 * POST `/notify/mail` with `{"mail": "email@example.com"}`
 * POST `/notify/sms` with `{"phone": "33102030405"}` 
+
+To check variables :
+
+* GET `/check/health`
