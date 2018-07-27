@@ -29,6 +29,7 @@ module.exports.sendMail = function(req, res) {
             console.log(error);
             res.send('the mail couldn\'t be delivered');
         } else {
+            console.log(new Date(Date.now()).toLocaleString() + ' => mail sent to ' + req.body.mail);
             res.send('the mail was successfully sent');
         }
     });

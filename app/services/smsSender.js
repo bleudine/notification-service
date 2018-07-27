@@ -11,9 +11,10 @@ module.exports.sendSMS = function(req, res) {
     const phone = req.body.phone || SMS_PLACEHOLDER;
     nexmo.message.sendSms(COMPANY, phone, 'You have a new customer.', (error, response) => {
         if (error) {
-            console.error(error);
+            console.log(error);
             res.send('the SMS couldn\'t be delivered');
         } else {
+            console.log(new Date(Date.now()).toLocaleString() + ' => sms sent to ' + req.body.phone);
             res.send('the SMS was successfully sent');
         }
     })
