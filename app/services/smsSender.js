@@ -9,7 +9,7 @@ const nexmo = new Nexmo({
 
 module.exports.sendSMS = function(req, res) {
     const phone = req.body.phone || SMS_PLACEHOLDER;
-    nexmo.message.sendSms(COMPANY, phone, 'You have a new customer.', (error, response) => {
+    nexmo.message.sendSms(COMPANY, phone, 'Corpus', (error, response) => {
         if (error) {
             console.log(error);
             res.send('the SMS couldn\'t be delivered');

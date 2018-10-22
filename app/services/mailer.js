@@ -16,8 +16,8 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
     from: MAIL,
-    subject: 'You have a new customer.',
-    text: 'You have a new customer.',
+    subject: 'Subject',
+    text: 'Corpus',
 };
 
 module.exports.sendMail = function(req, res) {
@@ -34,4 +34,3 @@ module.exports.sendMail = function(req, res) {
         }
     });
 };
-
